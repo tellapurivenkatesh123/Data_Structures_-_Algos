@@ -34,7 +34,7 @@ public class DoubleLinkedlist {
     }
     public int insertMiddle(int data){
         Node newnode=new Node(data);
-        if(head==null|| getSize()<=1 )throw new IllegalArgumentException("list is empty");
+        if(head==null|| getSize()<=1 )throw new IllegalArgumentException("invalid");
         else{
             Node fast=head.next;
             Node slow=head;
@@ -54,21 +54,23 @@ public class DoubleLinkedlist {
 
     public int insertFirst(int data){
         Node newnode=new Node(data);
-        if(head==null){head=tail=newnode;return ++length;}
+        if(head==null){head=tail=newnode;return head.data;}
         newnode.next=head;
         head.prev=newnode;
         head=newnode;
-        return ++length;
+        length++;
+        return head.data;
     }
 
 
     public int insertLast(int data){
         Node newnode=new Node(data);
-        if(head==null){head=tail=newnode;return ++length;}
+        if(head==null){head=tail=newnode;return tail.data;}
         newnode.prev=tail;
         tail.next=newnode;
         tail=newnode;
-        return ++length;
+        length++;
+        return tail.data;
     }
 
     public int insertAt(int data,int pos){
@@ -87,14 +89,14 @@ public class DoubleLinkedlist {
         return ++length;
     }
 
-    public Node deleteFirst(){
+    public int deleteFirst(){
         if(head==null)throw new IllegalArgumentException("list is empty");
 
         if(head==tail){head=tail=null;}
         else{ head=head.next;
         head.prev=null;}
         length--;
-        return head;
+        return head.data;
     }
     public Node deleteLast(){
         if(head==null)throw new IllegalArgumentException("list is empty");
@@ -118,6 +120,28 @@ public int deleteAt(int pos){
         temp.next.prev=temp;
         return --length;
 
+}
+public int display(){
+        if(head==null)throw new IllegalArgumentException("list is Empty");
+        Node temp=head;
+        int count=0;
+        while(temp!=null){
+            System.out.print(temp.data+",");
+            temp=temp.next;
+            count++;
+        }
+        return count;
+}
+public int reverseDisplay(){
+        if(head==null)throw new IllegalArgumentException("list is empty");
+        int count=0;
+        Node temp=tail;
+        while(temp!=null){
+            System.out.print(temp.data+",");
+            temp=temp.prev;
+            count++;
+        }
+        return count;
 }
 
     public int getSize(){
