@@ -66,7 +66,7 @@ public class LinkedlistTest {
         ls.insert(3);
         ls.deleteAt(2);
         assertEquals(1,ls.getHead().getData());
-        assertEquals(3,ls.getHead().next.getData());
+        assertEquals(3,ls.getTail().getData());
         assertEquals(2,ls.getSize());
     }
     @Test

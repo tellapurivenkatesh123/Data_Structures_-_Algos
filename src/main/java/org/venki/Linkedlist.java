@@ -4,7 +4,7 @@ public class Linkedlist {
 
     public class Node{
         private final int data;
-        public Node next=null;
+        Node next=null;
         Node(int data){
             this.data=data;
 

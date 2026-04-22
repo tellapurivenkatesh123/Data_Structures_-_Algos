@@ -98,7 +98,7 @@ public class DoubleLinkedlist {
         length--;
         return head.data;
     }
-    public Node deleteLast(){
+    public int deleteLast(){
         if(head==null)throw new IllegalArgumentException("list is empty");
         if(head==tail){head=tail=null;}
         else{
@@ -106,7 +106,7 @@ public class DoubleLinkedlist {
             tail.next=null;
         }
         length--;
-        return tail;
+        return tail.data;
     }
 public int deleteAt(int pos){
         if(head==null)throw new IllegalArgumentException("list is empty");
@@ -132,17 +132,7 @@ public int display(){
         }
         return count;
 }
-public int reverseDisplay(){
-        if(head==null)throw new IllegalArgumentException("list is empty");
-        int count=0;
-        Node temp=tail;
-        while(temp!=null){
-            System.out.print(temp.data+",");
-            temp=temp.prev;
-            count++;
-        }
-        return count;
-}
+
 
     public int getSize(){
         return length;
