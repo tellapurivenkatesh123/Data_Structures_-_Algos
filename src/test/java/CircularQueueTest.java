@@ -1,7 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.venki.CircularQueue;
-public class CircularQueuetest {
+public class CircularQueueTest {
     @Test
     void testEnqueue(){
         CircularQueue q=new CircularQueue(3);

@@ -1,7 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.venki.CircularLinkedlist;
-public class CircularLinkedListtest {
+public class CircularLinkedListTest {
     @Test
     public void testInsert(){
         CircularLinkedlist cl=new CircularLinkedlist();
