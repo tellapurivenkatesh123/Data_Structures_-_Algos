@@ -227,5 +227,65 @@ public class Linkedlist {
         head=prev;
         return head;
     }
+    public Node sort(){
+        if(head==null||head.next==null)return head;
+
+        int count=0;
+        Node curr=head;
+        while(curr!=null){
+            count++;
+            curr=curr.next;
+        }
+        //sentinal node
+        Node dummy=new Node(0);
+        dummy.next=head;
+
+        // bottom up merge
+        for(int step=1;step<count;step *=2){
+          Node prev=dummy;
+          curr=dummy.next;
+          while(curr!=null){
+              Node head1=curr;
+              Node head2=split(head1,step);
+
+              curr=split(head2,step);
+
+              prev.next=merge(head1,head2);
+
+              while(prev.next!=null){
+                  prev=prev.next;
+              }
+          }
+        }
+
+        return dummy.next;
+    }
+    private Node split(Node head,int size){
+        if(head==null)return null;
+        Node curr=head;
+        for(int i=1;i<size && curr.next!=null;i++){
+            curr=curr.next;
+        }
+        Node nextpart=curr.next;
+        curr.next=null;
+        return nextpart;
+    }
+
+    private Node merge(Node l1,Node l2){
+        Node dummy=new Node(0);
+        Node curr=dummy;
+        while(l1!=null && l2!=null){
+            if(l1.data<l2.data){
+                curr.next=l1;
+                l1=l1.next;
+            }else{
+                curr.next=l2;
+                l2=l2.next;
+            }
+            curr=curr.next;
+        }
+        curr.next=(l1!=null)? l1:l2;
+        return dummy.next;
+    }
 
 }
